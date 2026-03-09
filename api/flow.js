@@ -1,8 +1,8 @@
 import crypto from 'crypto';
-import brandsHandler from './brands.js';
-import modelsHandler from './models.js';
-import memoryHandler from './memory.js';
-import deviceHandler from './device.js';
+import brandsHandler from '../brands.js';
+import modelsHandler from '../models.js';
+import memoryHandler from '../memory.js';
+import deviceHandler from '../device.js';
 
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 
