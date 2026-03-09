@@ -136,6 +136,7 @@ export default async function handler(req, res) {
     if (action === 'ping') {
       console.log('🏥 Health check request detected');
       return sendEncryptedResponse({
+        version: '3.0',
         data: {
           status: 'active'
         }
@@ -146,6 +147,7 @@ export default async function handler(req, res) {
     if (requestData?.error) {
       console.warn('⚠️ Client error received:', requestData.error);
       return sendEncryptedResponse({
+        version: '3.0',
         data: {
           acknowledged: true
         }
@@ -156,6 +158,7 @@ export default async function handler(req, res) {
     if (action === 'INIT') {
       console.log('🚀 INIT action - Loading PAYMENT screen');
       return sendEncryptedResponse({
+        version: '3.0',
         screen: 'PAYMENT',
         data: {}
       });
@@ -172,6 +175,7 @@ export default async function handler(req, res) {
 
         if (paymentMethod === 'SUCCESS_PIX' || paymentMethod === 'SUCCESS_CARD') {
           return sendEncryptedResponse({
+            version: '3.0',
             screen: paymentMethod,
             data: {}
           });
@@ -179,6 +183,7 @@ export default async function handler(req, res) {
 
         // No valid method selected — stay on PAYMENT screen
         return sendEncryptedResponse({
+          version: '3.0',
           screen: 'PAYMENT',
           data: {}
         });
@@ -192,6 +197,7 @@ export default async function handler(req, res) {
       console.log('✅ COMPLETE - Flow finished');
       console.log('📊 Complete payload:', JSON.stringify(requestData));
       return sendEncryptedResponse({
+        version: '3.0',
         data: {}
       });
     }
@@ -199,6 +205,7 @@ export default async function handler(req, res) {
     // Unknown action
     console.error('❌ Unknown action:', action);
     return sendEncryptedResponse({
+      version: '3.0',
       data: {
         error_msg: 'Unknown action'
       }
