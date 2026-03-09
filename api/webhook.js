@@ -184,10 +184,9 @@ async function handleTextMessage(message, from, contactName) {
   
   // Se a mensagem for do Message Link ou contiver palavras-chave, envia o Flow
   if (
-    text.toLowerCase().includes('quero proteger meu celular') ||
-    text.toLowerCase().includes('cotação') || 
-    text.toLowerCase().includes('seguro') || 
-    text.toLowerCase().includes('cotar')
+    text.toLowerCase().includes('contrate') ||
+    text.toLowerCase().includes('agora') || 
+    text.toLowerCase().includes('Contrate seu seguro agora')
   ) {
     await sendFlowTemplate(from);
   } else {
@@ -317,8 +316,8 @@ async function sendTextMessage(to, text) {
 async function sendFlowTemplate(to) {
   const accessToken = process.env.WHATSAPP_ACCESS_TOKEN;
   const phoneNumberId = process.env.WHATSAPP_PHONE_NUMBER_ID;
-  const templateName = process.env.WHATSAPP_TEMPLATE_NAME || 'venda_zurich_celular';
-  const templateLanguage = process.env.WHATSAPP_TEMPLATE_LANGUAGE || 'en';
+  const templateName = 'teste_pme';
+  const templateLanguage = 'pt_BR';
 
   // Gera um flow_token único para rastrear esta conversa
   const flowToken = `FLOW_${Date.now()}_${to}`;
