@@ -1,6 +1,6 @@
 import crypto from 'crypto';
 
-const PRIVATE_KEY = process.env.PRIVATE_KEY;
+const PRIVATE_KEY = process.env.PRIVATE_KEY?.replace(/\\n/g, '\n');
 
 function decryptRequest(encryptedFlowData, encryptedAesKey, initialVector) {
   try {
@@ -126,7 +126,7 @@ export default async function handler(req, res) {
 
     // Helper function to send encrypted response
     const sendEncryptedResponse = (responseData) => {
-      const fullResponse = { version: '3.0', ...responseData };
+      const fullResponse = { version, ...responseData };
       const logData = { ...fullResponse, data: { ...fullResponse.data, ...(fullResponse.data?.qr_image ? { qr_image: '[base64 omitted]' } : {}) } };
       console.log('📤 Response to encrypt:', JSON.stringify(logData));
       const encryptedResponse = encryptResponse(fullResponse, decryptedAesKey, body.initial_vector);
@@ -158,7 +158,7 @@ export default async function handler(req, res) {
     if (action === 'INIT') {
       console.log('🚀 INIT action - Loading INSURANCE_SELECTION screen');
       return sendEncryptedResponse({
-        screen: 'TEST_SCREEN',
+        screen: 'INSURANCE_SELECTION',
         data: {}
       });
     }
