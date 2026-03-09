@@ -424,20 +424,38 @@
             "id": "SUCCESS_PIX",
             "title": "Pagamento via Pix",
             "terminal": true,
-            "data": {},
+            "data": {
+                "qr_image": {
+                    "type": "string",
+                    "__example__": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
+                }
+            },
             "layout": {
                 "type": "SingleColumnLayout",
                 "children": [
                     {
-                        "type": "RichText",
-                        "text": [
-                            "# Seguro contratado com sucesso!",
-                            "## Pagamento via Pix:",
-                            "Chave Pix: pagamento@zurich.com.br",
-                            "Você tem 30 minutos para concluir o pagamento. O seguro é ativado imediatamente após a confirmação.",
-                            "![QR Code Pix](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUoAAAFKCAIAAAD0S4FSAAAFjklEQVR4nO3dQW4rNxBAQU+Q+19Z2WYlfIRmmnxTtZclj/TQmwb5fD6fH6Dor+kPAOwib8iSN2TJG7LkDVnyhix5Q5a8IUvekCVvyJI3ZMkbsuQNWfKGLHlDlrwhS96QJW/IkjdkyRuy5A1Z8oYseUOWvCFL3pAlb8iSN2TJG7LkDVnyhix5Q5a8IUvekCVvyJI3ZMkbsuQNWfKGLHlD1t9Tb/w8z0/L5/O57llNfebv7+u38VtMb8iSN2TJG7LkDVnyhix5Q5a8IUvekCVvyBrbWpvaplpx5jbVyrPat1u27xv02/hzpjdkyRuy5A1Z8oYseUOWvCFL3pAlb8iSN2QdurX2trPH9v3l7//Rvr20qZ22G38b+5jekCVvyJI3ZMkbsuQNWfKGLHlDlrwhS96QdeXW2tvY8eK/Mb0hS96QJW/IkjdkyRuy5A1Z8oYseUOWvCHL1toFpm4mvfF0Mf7N9IYseUOWvCFL3pAlb8iSN2TJG7LkDVnyhqwrt9Z621RTN3V+t/Laqe+o99tYYXpDlrwhS96QJW/IkjdkyRuy5A1Z8oYseUPWoVtrU6eLvc3UttzKbpnfxp8zvSFL3pAlb8iSN2TJG7LkDVnyhix5Q5a8IWtsa82ZWL/1rKa2uPbtpflt/BbTG7LkDVnyhix5Q5a8IUvekCVvyJI3ZMkbsp6pDaGpWy/3OXPXat+z2vf/+n5/i+kNWfKGLHlDlrwhS96QJW/IkjdkyRuy5A1Zh94Q+t3UTtuZd2Lu2x5722fuMb0hS96QJW/IkjdkyRuy5A1Z8oYseUOWvCFr7Ky1G08Im9rE2vesbtz/673vPqY3ZMkbsuQNWfKGLHlDlrwhS96QJW/IkjdkHXrW2r5TzVZee+Ze2ts2sfb5XHgv7XemN2TJG7LkDVnyhix5Q5a8IUvekCVvyJI3ZB26tbayIbRvu+jM7bEVU/t/U+fDPReeS7fC9IYseUOWvCFL3pAlb8iSN2TJG7LkDVnyhqyxG0LPPAPszC2ufd/Rvved2g878zlPMb0hS96QJW/IkjdkyRuy5A1Z8oYseUOWvCHr0K21M0/qWvnLbzvF7bsb98Oeod/GCtMbsuQNWfKGLHlDlrwhS96QJW/IkjdkyRuyDr0h9LszzwDb975n7kv1zof77sbdQdMbsuQNWfKGLHlDlrwhS96QJW/IkjdkyRuyrtxam7pd9MZbL78789S63s2zU0xvyJI3ZMkbsuQNWfKGLHlDlrwhS96QJW/IGrsh9G3O3LS78dS6G2+enWJ6Q5a8IUvekCVvyJI3ZMkbsuQNWfKGLHlD1tjW2pk3Kq64cQNsaqdt6uS5z4Xf0QrTG7LkDVnyhix5Q5a8IUvekCVvyJI3ZMkbsg69IfTMk6um7uJcsW+La58zP9WNn9n0hix5Q5a8IUvekCVvyJI3ZMkbsuQNWfKGrCu31t5mZSNq6k7MM31e9jRMb8iSN2TJG7LkDVnyhix5Q5a8IUvekCVvyLK1dv2u1dTJcyu7dFOvvfFbWGF6Q5a8IUvekCVvyJI3ZMkbsuQNWfKGLHlD1pVba2fe43nj5tmZ/9GNO21nMr0hS96QJW/IkjdkyRuy5A1Z8oYseUOWvCHrmdrjOfNsqhVT21QrT9K3//+Yes6mN2TJG7LkDVnyhix5Q5a8IUvekCVvyJI3ZI1trQG7md6QJW/IkjdkyRuy5A1Z8oYseUOWvCFL3pAlb8iSN2TJG7LkDVnyhix5Q5a8IUvekCVvyJI3ZMkbsuQNWfKGLHlDlrwhS96QJW/IkjdkyRuy5A1Z8oYseUOWvCFL3pAlb8iSN2TJG7LkDVnyhix5w0/VP1Syi5XNJmnNAAAAAElFTkSuQmCC)",
-                            "Em caso de dúvidas, entre em contato com nossa central de atendimento."
-                        ]
+                        "type": "TextHeading",
+                        "text": "Seguro contratado com sucesso!"
+                    },
+                    {
+                        "type": "TextSubheading",
+                        "text": "Pagamento via Pix"
+                    },
+                    {
+                        "type": "TextBody",
+                        "text": "Chave Pix: pagamento@zurich.com.br\n\nVocê tem 30 minutos para concluir o pagamento. O seguro é ativado imediatamente após a confirmação."
+                    },
+                    {
+                        "type": "Image",
+                        "src": "${data.qr_image}",
+                        "width": 300,
+                        "height": 300,
+                        "scale-type": "contain",
+                        "alt-text": "QR Code Pix"
+                    },
+                    {
+                        "type": "TextBody",
+                        "text": "Em caso de dúvidas, entre em contato com nossa central de atendimento."
                     },
                     {
                         "type": "Footer",

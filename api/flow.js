@@ -136,7 +136,6 @@ export default async function handler(req, res) {
     if (action === 'ping') {
       console.log('🏥 Health check request detected');
       return sendEncryptedResponse({
-        version: '3.0',
         data: {
           status: 'active'
         }
@@ -147,7 +146,6 @@ export default async function handler(req, res) {
     if (requestData?.error) {
       console.warn('⚠️ Client error received:', requestData.error);
       return sendEncryptedResponse({
-        version: '3.0',
         data: {
           acknowledged: true
         }
@@ -158,7 +156,6 @@ export default async function handler(req, res) {
     if (action === 'INIT') {
       console.log('🚀 INIT action - Loading PAYMENT screen');
       return sendEncryptedResponse({
-        version: '3.0',
         screen: 'PAYMENT',
         data: {}
       });
@@ -173,17 +170,24 @@ export default async function handler(req, res) {
         const paymentMethod = requestData.payment_method;
         console.log('💳 Payment method selected:', paymentMethod);
 
-        if (paymentMethod === 'SUCCESS_PIX' || paymentMethod === 'SUCCESS_CARD') {
+        if (paymentMethod === 'SUCCESS_PIX') {
           return sendEncryptedResponse({
-            version: '3.0',
-            screen: paymentMethod,
+            screen: 'SUCCESS_PIX',
+            data: {
+              qr_image: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUoAAAFKCAIAAAD0S4FSAAAFjklEQVR4nO3dQW4rNxBAQU+Q+19Z2WYlfIRmmnxTtZclj/TQmwb5fD6fH6Dor+kPAOwib8iSN2TJG7LkDVnyhix5Q5a8IUvekCVvyJI3ZMkbsuQNWfKGLHlDlrwhS96QJW/IkjdkyRuy5A1Z8oYseUOWvCFL3pAlb8iSN2TJG7LkDVnyhix5Q5a8IUvekCVvyJI3ZMkbsuQNWfKGLHlD1t9Tb/w8z0/L5/O57llNfebv7+u38VtMb8iSN2TJG7LkDVnyhix5Q5a8IUvekCVvyBrbWpvaplpx5jbVyrPat1u27xv02/hzpjdkyRuy5A1Z8oYseUOWvCFL3pAlb8iSN2QdurX2trPH9v3l7//Rvr20qZ22G38b+5jekCVvyJI3ZMkbsuQNWfKGLHlDlrwhS96QdeXW2tvY8eK/Mb0hS96QJW/IkjdkyRuy5A1Z8oYseUOWvCHL1toFpm4mvfF0Mf7N9IYseUOWvCFL3pAlb8iSN2TJG7LkDVnyhqwrt9Z621RTN3V+t/Laqe+o99tYYXpDlrwhS96QJW/IkjdkyRuy5A1Z8oYseUPWoVtrU6eLvc3UttzKbpnfxp8zvSFL3pAlb8iSN2TJG7LkDVnyhix5Q5a8IWtsa82ZWL/1rKa2uPbtpflt/BbTG7LkDVnyhix5Q5a8IUvekCVvyJI3ZMkbsp6pDaGpWy/3OXPXat+z2vf/+n5/i+kNWfKGLHlDlrwhS96QJW/IkjdkyRuy5A1Zh94Q+t3UTtuZd2Lu2x5722fuMb0hS96QJW/IkjdkyRuy5A1Z8oYseUOWvCFr7Ky1G08Im9rE2vesbtz/673vPqY3ZMkbsuQNWfKGLHlDlrwhS96QJW/IkjdkHXrW2r5TzVZee+Ze2ts2sfb5XHgv7XemN2TJG7LkDVnyhix5Q5a8IUvekCVvyJI3ZB26tbayIbRvu+jM7bEVU/t/U+fDPReeS7fC9IYseUOWvCFL3pAlb8iSN2TJG7LkDVnyhqyxG0LPPAPszC2ufd/Rvved2g878zlPMb0hS96QJW/IkjdkyRuy5A1Z8oYseUOWvCHr0K21M0/qWvnLbzvF7bsb98Oeod/GCtMbsuQNWfKGLHlDlrwhS96QJW/IkjdkyRuyDr0h9LszzwDb975n7kv1zof77sbdQdMbsuQNWfKGLHlDlrwhS96QJW/IkjdkyRuyrtxam7pd9MZbL78789S63s2zU0xvyJI3ZMkbsuQNWfKGLHlDlrwhS96QJW/IGrsh9G3O3LS78dS6G2+enWJ6Q5a8IUvekCVvyJI3ZMkbsuQNWfKGLHlD1tjW2pk3Kq64cQNsaqdt6uS5z4Xf0QrTG7LkDVnyhix5Q5a8IUvekCVvyJI3ZMkbsg69IfTMk6um7uJcsW+La58zP9WNn9n0hix5Q5a8IUvekCVvyJI3ZMkbsuQNWfKGrCu31t5mZSNq6k7MM31e9jRMb8iSN2TJG7LkDVnyhix5Q5a8IUvekCVvyLK1dv2u1dTJcyu7dFOvvfFbWGF6Q5a8IUvekCVvyJI3ZMkbsuQNWfKGLHlD1pVba2fe43nj5tmZ/9GNO21nMr0hS96QJW/IkjdkyRuy5A1Z8oYseUOWvCHrmdrjOfNsqhVT21QrT9K3//+Yes6mN2TJG7LkDVnyhix5Q5a8IUvekCVvyJI3ZI1trQG7md6QJW/IkjdkyRuy5A1Z8oYseUOWvCFL3pAlb8iSN2TJG7LkDVnyhix5Q5a8IUvekCVvyJI3ZMkbsuQNWfKGLHlDlrwhS96QJW/IkjdkyRuy5A1Z8oYseUOWvCFL3pAlb8iSN2TJG7LkDVnyhix5w0/VP1Syi5XNJmnNAAAAAElFTkSuQmCC'
+            }
+          });
+        }
+
+        if (paymentMethod === 'SUCCESS_CARD') {
+          return sendEncryptedResponse({
+            screen: 'SUCCESS_CARD',
             data: {}
           });
         }
 
         // No valid method selected — stay on PAYMENT screen
         return sendEncryptedResponse({
-          version: '3.0',
           screen: 'PAYMENT',
           data: {}
         });
@@ -197,7 +201,6 @@ export default async function handler(req, res) {
       console.log('✅ COMPLETE - Flow finished');
       console.log('📊 Complete payload:', JSON.stringify(requestData));
       return sendEncryptedResponse({
-        version: '3.0',
         data: {}
       });
     }
@@ -205,7 +208,6 @@ export default async function handler(req, res) {
     // Unknown action
     console.error('❌ Unknown action:', action);
     return sendEncryptedResponse({
-      version: '3.0',
       data: {
         error_msg: 'Unknown action'
       }
