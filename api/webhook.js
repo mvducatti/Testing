@@ -342,6 +342,17 @@ async function sendFlowTemplate(to) {
             },
             components: [
               {
+                type: 'header',
+                parameters: [
+                  {
+                    type: 'image',
+                    image: {
+                      link: 'https://i.imgur.com/hqGJ2Ho.png'
+                    }
+                  }
+                ]
+              },
+              {
                 type: 'button',
                 sub_type: 'flow',
                 index: '1',
