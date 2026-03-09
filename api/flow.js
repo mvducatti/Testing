@@ -126,8 +126,9 @@ export default async function handler(req, res) {
 
     // Helper function to send encrypted response
     const sendEncryptedResponse = (responseData) => {
-      console.log('📤 Response to encrypt:', JSON.stringify(responseData));
-      const encryptedResponse = encryptResponse(responseData, decryptedAesKey, body.initial_vector);
+      const fullResponse = { version: '3.0', ...responseData };
+      console.log('📤 Response to encrypt:', JSON.stringify(fullResponse));
+      const encryptedResponse = encryptResponse(fullResponse, decryptedAesKey, body.initial_vector);
       console.log('✅ Response encrypted and sent');
       return res.status(200).send(encryptedResponse);
     };
@@ -154,9 +155,9 @@ export default async function handler(req, res) {
 
     // Handle INIT action (when user opens the flow)
     if (action === 'INIT') {
-      console.log('🚀 INIT action - Loading PAYMENT screen');
+      console.log('🚀 INIT action - Loading INSURANCE_SELECTION screen');
       return sendEncryptedResponse({
-        screen: 'PAYMENT',
+        screen: 'INSURANCE_SELECTION',
         data: {}
       });
     }
