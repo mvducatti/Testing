@@ -158,7 +158,7 @@ export default async function handler(req, res) {
     if (action === 'INIT') {
       console.log('🚀 INIT action - Loading INSURANCE_SELECTION screen');
       return sendEncryptedResponse({
-        screen: 'INSURANCE_SELECTION',
+        screen: 'TEST_SCREEN',
         data: {}
       });
     }
