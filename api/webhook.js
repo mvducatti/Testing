@@ -185,13 +185,14 @@ async function handleTextMessage(message, from, contactName) {
   // Se a mensagem for do Message Link ou contiver palavras-chave, envia o Flow
   if (
     text.toLowerCase().includes('contrate') ||
+    text.toLowerCase().includes('seguro') ||
     text.toLowerCase().includes('agora') || 
     text.toLowerCase().includes('Contrate seu seguro agora')
   ) {
     await sendFlowTemplate(from);
   } else {
     // Senão, envia mensagem com instruções
-    await sendTextMessage(from, `Oi ${contactName}! 👋\n\nDigite *cotar* ou *seguro* para iniciar uma cotação!`);
+    await sendTextMessage(from, `Oi ${contactName}! 👋\n\nDigite *contrate* ou *seguro* para iniciar uma cotação!`);
   }
 }
 
